@@ -14,7 +14,7 @@ public class BattleRewardProcessor {
     public enum RewardType { CARD_SELECTION, RELIC_SELECTION }
 
     public static void showRandomRewardEnemy(GameController controller) {
-        RewardType type = Math.random() < 0.0 ? RewardType.CARD_SELECTION : RewardType.RELIC_SELECTION;
+        RewardType type = Math.random() < 0.5 ? RewardType.CARD_SELECTION : RewardType.RELIC_SELECTION;
         switch (type) {
             case CARD_SELECTION -> showCardRewardOverlayEnemy(controller);
             case RELIC_SELECTION -> showRelicRewardOverlayEnemy(controller);
@@ -22,7 +22,7 @@ public class BattleRewardProcessor {
     }
 
     public static void showRandomRewardLevelBoss(GameController controller) {
-        RewardType type = Math.random() < 0.0 ? RewardType.CARD_SELECTION : RewardType.RELIC_SELECTION;
+        RewardType type = Math.random() < 0.5 ? RewardType.CARD_SELECTION : RewardType.RELIC_SELECTION;
         switch (type) {
             case CARD_SELECTION -> showCardRewardOverlayLevelBoss(controller);
             case RELIC_SELECTION -> showRelicRewardOverlayLevelBoss(controller);
