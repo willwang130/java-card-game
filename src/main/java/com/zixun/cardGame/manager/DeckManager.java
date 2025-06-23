@@ -17,7 +17,7 @@ public class DeckManager {
                     "金属化", "打击", "打击", "缴械", "势不可挡", "屹然不动")
     );
 
-    public static final int MAX_DECK = 15;
+    public static final int MAX_DECK = 25;
     public static int HAND_SIZE = 8;
     public static int DRAW_MIN = 5;
 
