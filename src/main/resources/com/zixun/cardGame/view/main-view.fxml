@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<StackPane fx:id="rootPane"
+           xmlns:fx="http://javafx.com/fxml"
+           xmlns="http://javafx.com/javafx"
+           fx:controller="com.zixun.cardGame.controller.GameController">
+
+    <!-- 主菜单按钮区域 -->
+    <VBox fx:id="mainMenuPane" alignment="CENTER" visible="false">
+        <Button fx:id="btnNewGame" text="新游戏" onAction="#onNewGame"
+                style="-fx-font-size: 24px; -fx-text-fill: black; -fx-background-color: transparent;
+               -fx-border-color: transparent; -fx-pref-width: 240; -fx-pref-height: 60;"/>
+        <Button fx:id="btnContinueGame" text="继续游戏" onAction="#onNewGame"
+                style="-fx-font-size: 24px; -fx-text-fill: black; -fx-background-color: transparent;
+               -fx-border-color: transparent; -fx-pref-width: 240; -fx-pref-height: 60;"/>
+        <Button fx:id="btnSettings" text="设置" onAction="#onSettings"
+                style="-fx-font-size: 24px; -fx-text-fill: black; -fx-background-color: transparent;
+               -fx-border-color: transparent; -fx-pref-width: 240; -fx-pref-height: 60;"/>
+        <Button fx:id="btnExit" text="退出游戏" onAction="#onExit"
+                style="-fx-font-size: 24px; -fx-text-fill: black; -fx-background-color: transparent;
+               -fx-border-color: transparent; -fx-pref-width: 240; -fx-pref-height: 60;"/>
+    </VBox>
+
+
+    <BorderPane fx:id="roleSelectPane"
+               prefWidth="800" prefHeight="600"
+               style="-fx-background-color: #e9ecef;"
+                visible="false">
+        <top><Label /></top>
+        <!-- 中央：三栏白底职业介绍 -->
+        <center>
+            <VBox fx:id="infoBar" alignment="CENTER" spacing="32"
+                  prefHeight="200" BorderPane.alignment="CENTER">
+                <!-- 战士 -->
+                <VBox prefHeight="200" spacing="6"
+                      style="-fx-background-color: white; -fx-background-radius: 18; -fx-padding: 18;">
+                    <Label text="战士" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label text="起手：Strike×5&#10;Shield×1&#10;Holy Light×1"
+                           wrapText="true" style="-fx-text-fill: #555;"/>
+                    <Label text="特点：耐打 / 护甲 / 物理输出"
+                           wrapText="true" style="-fx-text-fill: #777;"/>
+                </VBox>
+            </VBox>
+        </center>
+
+        <!-- 底部：三个大按钮横排 -->
+        <bottom>
+            <VBox fx:id="classBtnBar" alignment="CENTER" spacing="30"
+                  prefHeight="140" BorderPane.alignment="CENTER">
+
+                <Button fx:id="btnWarrior" text="选 战 士" onAction="#onSelectWarrior"
+                        style="-fx-background-color: #d24c4c; -fx-background-radius: 18;
+                           -fx-pref-height: 120; -fx-font-size: 26px; -fx-text-fill: white;"/>
+            </VBox>
+        </bottom>
+    </BorderPane>
+
+    <BorderPane fx:id="gameContent" visible="false">
+        <!-- 顶部栏：蓝色区域 -->
+        <top>
+            <VBox  maxHeight="150">
+                <!-- 顶部栏：蓝色区域 -->
+                <HBox spacing="20" prefHeight="40" alignment="CENTER_LEFT" style="-fx-background-color: #00A2E8; -fx-padding: 5 20 5 20;">
+                    <Label fx:id="playerHpLabelTop" text="HP: 80/80" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                    <Label fx:id="goldLabel" text="金币: 99" style="-fx-text-fill: white;"/>
+                    <Label fx:id="floorLabel" text="层数: 1F" style="-fx-text-fill: white;"/>
+                    <Label fx:id="levelLabel" text="第1层 / 共3层"/>
+                    <Label fx:id="cardHoldTop" text="已有/上限"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="openInventoryButton" onAction="#onOpenInventory" text="我的背包" style="-fx-padding: 5 20 5 20;">
+                        <HBox.margin>
+                            <Insets right="30"/>
+                        </HBox.margin>
+                    </Button>
+                </HBox>
+                <!-- 宝物栏：橙色区域 -->
+                <VBox>
+                    <HBox fx:id="relicBar" spacing="10" alignment="CENTER_LEFT" prefHeight="30"
+                          style="-fx-background-color: #FFC000; -fx-padding: 5 20 5 20;"/>
+                </VBox>
+            </VBox>
+        </top>
+
+        <!-- 中部内容： 地图界面 + 玩家/怪物图像 + Buff 区域 -->
+        <center>
+            <StackPane fx:id="centerContent">
+                <AnchorPane fx:id="mapPane" visible="false">
+                    <ScrollPane fx:id="mapScroll"
+                                fitToWidth="true"
+                                fitToHeight="false"
+                                pannable="true"
+                                hbarPolicy="AS_NEEDED"
+                                vbarPolicy="AS_NEEDED"
+                                style="-fx-background-color: #f2f2f2;"
+                                AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <StackPane fx:id="layerStack" alignment="TOP_CENTER"  prefWidth="1000" prefHeight="1450"
+                                   style="-fx-padding: 50 0 0 0;">
+                            <Pane fx:id="pathLayer" mouseTransparent="true" pickOnBounds="false"/>
+                            <GridPane fx:id="mapGrid" alignment="TOP_CENTER"/>
+                        </StackPane>
+                    </ScrollPane>
+                </AnchorPane>
+
+                <AnchorPane fx:id="battlePane" visible="false">
+                    <BorderPane AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <!-- 战斗界面模板如下 -->
+                        <center>
+                            <HBox alignment="CENTER" spacing="20" style="-fx-background-color: transparent; -fx-padding: 10;">
+                                <!-- 左侧外边距 -->
+                                <Region fx:id="leftSpacer" prefWidth="30"/>
+
+                                <!-- 玩家区域 -->
+                                <VBox fx:id="playerArea" alignment="CENTER" spacing="0">
+                                    <StackPane  prefWidth="300" prefHeight="300" maxWidth="300" maxHeight="300"
+                                                style="-fx-background-color: #f0f 4f8; -fx-border-color: #a0c4ff;
+                                                -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;">
+                                        <ImageView fx:id="playerImageView" fitWidth="120" fitHeight="120"/>
+                                    </StackPane>
+                                    <VBox alignment="CENTER" spacing="4" style="-fx-padding: 0;">
+                                        <StackPane>
+                                            <ProgressBar fx:id="playerHpBar" prefWidth="180"/>
+                                            <Label fx:id="playerHpValueLabel" text="80 / 100"
+                                                   style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                                        </StackPane>
+                                        <Label fx:id="playerBlockLabel" text="护甲: 0" style="-fx-text-fill: gray;"/>
+                                        <FlowPane fx:id="playerBuffBar"/>
+                                    </VBox>
+                                </VBox>
+
+                                <!-- 中央释放区 -->
+                                <Region fx:id="centerArea" prefWidth="240" minHeight="180"
+                                        style="-fx-background-color: rgba(255,255,255,0.05); -fx-border-color: #aaa;
+                                        -fx-border-style: dashed;"/>
+                                <!-- 怪物区域 -->
+                                <VBox fx:id="monsterArea" alignment="CENTER" spacing="0">
+                                    <Label fx:id="monsterIntentLabel" text="即将发动：？？？"
+                                           style="-fx-text-fill: #d62828; -fx-font-size: 12px;"/>
+                                    <Label fx:id="battleMonsterNameLabel"
+                                           style="-fx-text-fill: #3a3a3a; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                                    <StackPane prefWidth="300" prefHeight="300" maxHeight="300" maxWidth="300"
+                                               style="-fx-background-color: #f0f4f8; -fx-border-color: #a0c4ff; -fx-border-width: 2;
+                                                -fx-background-radius: 10; -fx-border-radius: 10;">
+                                        <ImageView fx:id="monsterImageView" fitWidth="120" fitHeight="120"/>
+                                    </StackPane>
+                                    <VBox alignment="CENTER" spacing="4" style="-fx-padding: 0;">
+                                        <StackPane>
+                                            <ProgressBar fx:id="monsterHpBar" prefWidth="180"/>
+                                            <Label fx:id="monsterHpValueLabel" text="80 / 100"
+                                                   style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                                        </StackPane>
+                                        <Label fx:id="monsterBlockLabel" text="护甲: 0" style="-fx-text-fill: gray;"/>
+                                        <FlowPane fx:id="monsterBuffBar"/>
+                                    </VBox>
+                                </VBox>
+                                <!-- 右侧外边距 -->
+                                <Region fx:id="rightSpacer" prefWidth="30"/>
+                            </HBox>
+                        </center>
+                        <bottom>
+                            <HBox fx:id="bottomBattle" spacing="10" style="-fx-background-color: #f0f4f8; -fx-padding: 10;"
+                                  prefHeight="200" alignment="CENTER">
+                                <!-- 牌库 -->
+                                <StackPane   alignment="BOTTOM_LEFT" prefWidth="150" prefHeight="200" style="-fx-background-color: white;">
+                                    <!-- EP指示器（粉色圆） -->
+                                    <!-- EP：右上角 -->
+                                    <Label fx:id="epLabel" text="3 / 3"
+                                           style="-fx-background-color: #f9d6e3; -fx-text-fill: #8b3a62; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 18; -fx-background-radius: 30;">
+                                        <StackPane.alignment>TOP_RIGHT</StackPane.alignment>
+                                        <StackPane.margin>
+                                            <Insets top="10" right="10"/>
+                                        </StackPane.margin>
+                                    </Label>
+
+                                    <!-- 抽牌堆：左下角 -->
+                                    <Label fx:id="cardInDeckLabel" text="剩余牌: 7"
+                                           style="-fx-background-color: #fff3cd; -fx-padding: 12 12; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #f1e3a1;">
+                                        <StackPane.alignment>BOTTOM_LEFT</StackPane.alignment>
+                                        <StackPane.margin>
+                                            <Insets bottom="10" left="10"/>
+                                        </StackPane.margin>
+                                    </Label>
+                                </StackPane >
+                                <!-- 手牌展示区 -->
+                                <HBox fx:id="handCardBox" spacing="10" alignment="CENTER"
+                                      style="-fx-background-color: #ffffff;
+                                     -fx-border-color: #cfcfcf;
+                                     -fx-border-radius: 10;
+                                     -fx-background-radius: 10;
+                                     -fx-padding: 10;"
+                                      HBox.hgrow="ALWAYS"/>
+                                <StackPane prefWidth="150" prefHeight="200" style="-fx-background-color: white;">
+                                    <!-- 结束回合按钮：左上角 -->
+                                    <Button fx:id="endTurnBtn" text="结束回合" onAction="#onEndTurnClick"
+                                            style="-fx-background-color: #c8b8ff; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 8;">
+                                        <StackPane.alignment>TOP_LEFT</StackPane.alignment>
+                                        <StackPane.margin>
+                                            <Insets top="10" left="10"/>
+                                        </StackPane.margin>
+                                    </Button>
+
+                                    <!-- 弃牌堆：右下角 -->
+                                    <Label fx:id="cardInDiscardLabel" text="弃牌: 2"
+                                           style="-fx-background-color: #fff3cd; -fx-padding: 12 12; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #f1e3a1;">
+                                        <StackPane.alignment>BOTTOM_RIGHT</StackPane.alignment>
+                                        <StackPane.margin>
+                                            <Insets bottom="10" right="10"/>
+                                        </StackPane.margin>
+                                    </Label>
+                                </StackPane>
+                            </HBox>
+                        </bottom>
+                    </BorderPane>
+                    <!-- 消失/能力牌堆 -->
+                    <Label fx:id="cardInExhaustLabel"
+                           text="0"
+                           AnchorPane.bottomAnchor="220.0"
+                    AnchorPane.rightAnchor="20.0"
+                    prefWidth="40" prefHeight="40"
+                    alignment="CENTER"
+                    style="-fx-background-color: #a06bff;
+                    -fx-text-fill: white;
+                    -fx-font-weight: bold;
+                    -fx-font-size: 14;
+                    -fx-background-radius: 20;
+                    -fx-border-radius: 20;">
+                    <graphic>
+                        <Label text="" />
+                    </graphic>
+                </Label>
+                </AnchorPane>
+                <!-- 左侧战斗日志区域 -->
+                <AnchorPane fx:id="battleLogPane" visible="false"
+                            AnchorPane.leftAnchor="0.0"
+                            AnchorPane.topAnchor="0.0"
+                            AnchorPane.bottomAnchor="0.0"
+                            prefWidth="220"
+                            mouseTransparent="true">
+                    <VBox prefWidth="220"
+                          AnchorPane.topAnchor="0.0"
+                          AnchorPane.bottomAnchor="200.0"
+                          spacing="4"
+                          style="-fx-background-color: rgba(0,0,0,0.55); -fx-padding: 8;">
+                        <ListView fx:id="gameLog" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </AnchorPane>
+            </StackPane>
+        </center>
+    </BorderPane>
+</StackPane>

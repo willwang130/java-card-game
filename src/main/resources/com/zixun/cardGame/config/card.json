@@ -1,0 +1,787 @@
+{
+  "打击": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害",
+      "action": {
+        "damage": 100
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害",
+      "action": {
+        "damage": 200
+      }
+    }
+  },
+  "战吼": {
+    "type": "技能",
+    "rarity": "common",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "抽 1 张牌",
+      "action": {
+        "draw": 1
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "抽 2 张牌",
+      "action": {
+        "draw": 2
+      }
+    }
+  },
+  "防御": {
+    "type": "技能",
+    "rarity": "common",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "获得 {block} 点格挡",
+      "action": {
+        "gainBlock": 5
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "获得 {block} 点格挡",
+      "action": {
+        "gainBlock": 8
+      }
+    }
+  },
+  "痛击": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 2,
+      "description": "造成 {damage} 点伤害并使敌人易伤 2 回合",
+      "action": {
+        "damage": 8,
+        "applyDebuff": {
+          "vulnerable": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "造成 {damage} 点伤害并使敌人易伤 3 回合",
+      "action": {
+        "damage": 10,
+        "applyDebuff": {
+          "vulnerable": 3
+        }
+      }
+    }
+  },
+  "旋风斩": {
+    "type": "攻击",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "消耗所有能量，每点能量对所有敌人造成 {damage} 点伤害 ({total})",
+      "action": {
+        "xCost": true,
+        "damagePerEnergy": 5,
+        "target": "all_enemies"
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "消耗所有能量，每点能量对所有敌人造成 {damage} 点伤害 ({total})",
+      "action": {
+        "xCost": true,
+        "damagePerEnergy": 7,
+        "target": "all_enemies"
+      }
+    }
+  },
+  "死亡收割": {
+    "type": "攻击",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "对所有敌人造成 {damage} 点伤害并回复等量生命值",
+      "action": {
+        "lifeSteal": 4,
+        "target": "all_enemies"
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "对所有敌人造成 {damage} 点伤害并回复等量生命值",
+      "action": {
+        "lifeSteal": 5,
+        "target": "all_enemies"
+      }
+    }
+  },
+  "献祭": {
+    "type": "技能",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "失去 6 点生命，抽 3 张牌并获得 2 点能量",
+      "action": {
+        "loseHp": 6,
+        "draw": 3,
+        "gainEp": 2
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "失去 6 点生命，抽 5 张牌并获得 2 点能量",
+      "action": {
+        "loseHp": 6,
+        "draw": 5,
+        "gainEp": 2
+      }
+    }
+  },
+  "交锋": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 0,
+      "description": "只有在手牌每一张牌都是攻击牌才能打出, 造成 {damage} 点伤害",
+      "action": {
+        "requireAllAttackInHand": 14
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "只有在手牌每一张牌都是攻击牌才能打出, 造成 {damage} 点伤害",
+      "action": {
+        "requireAllAttackInHand": 18
+      }
+    }
+  },
+  "全身撞击": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成你当前格挡值 ({damage}) 的伤害",
+      "action": {
+        "damageEqualsCurrentBlock": 0
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "造成你当前格挡值 ({damage}) 的伤害",
+      "action": {
+        "damageEqualsCurrentBlock": 0
+      }
+    }
+  },
+  "剑柄打击": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，抽1张牌",
+      "action": {
+        "damage": 9,
+        "draw": 1
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，抽2张牌",
+      "action": {
+        "damage": 11,
+        "draw": 2
+      }
+    }
+  },
+  "破灭": {
+    "type": "技能",
+    "rarity": "common",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "打出抽牌堆顶部的卡牌，将其消耗（消耗属性的牌本场战斗中不会出现）",
+      "action": {
+        "playTopCardAndExhaust": true
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "打出抽牌堆顶部的卡牌，将其消耗（本场战斗中不会出现）",
+      "action": {
+        "playTopCardAndExhaust": true
+      }
+    }
+  },
+  "活动肌肉": {
+    "type": "技能",
+    "rarity": "common",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "获得 2 点力量，回合结束失去 2 点力量",
+      "action": {
+        "gainBuffThisTurn": {
+          "strength": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "获得 4 点力量，回合结束失去 4 点力量",
+      "action": {
+        "gainBuffThisTurn": {
+          "strength": 4
+        }
+      }
+    }
+  },
+  "铁波斩": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "获得 {block} 点格挡，造成 {damage} 点伤害。",
+      "action": {
+        "gainBlock": 5,
+        "damage": 5
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "获得 {block} 点格挡，造成 {damage} 点伤害。",
+      "action": {
+        "gainBlock": 7,
+        "damage": 7
+      }
+    }
+  },
+  "双重打击": {
+    "type": "攻击",
+    "rarity": "common",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害 2 次",
+      "action": {
+        "damage": 5,
+        "multiHit": {
+          "times": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害 2 次",
+      "action": {
+        "damage": 8,
+        "multiHit": {
+          "times": 2
+        }
+      }
+    }
+  },
+  "地狱之刃": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "增加一张随机攻击牌到你的手牌并在本回合消耗为 0 消耗",
+      "exhaust": true,
+      "action": {
+        "addRandomCard": {
+          "type": "攻击",
+          "costThisTurn": 0,
+          "oneTime": true
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "增加一张随机攻击牌到你的手牌并在本回合消耗为 0 消耗",
+      "exhaust": true,
+      "action": {
+        "addRandomCard": {
+          "type": "攻击",
+          "costThisTurn": 0,
+          "oneTime": true
+        }
+      }
+    }
+  },
+  "放血": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "获得 2 点EP失去 3 点生命",
+      "action": {
+        "gainEp": 2,
+        "loseHp": 3
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "获得 3 点EP失去 3 点生命",
+      "action": {
+        "gainEp": 3,
+        "loseHp": 3
+      }
+    }
+  },
+  "威吓": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "给予所有敌人 1 层虚弱 \n(消耗)",
+      "exhaust": true,
+      "target": "all_enemies",
+      "action": {
+        "applyDebuff": {
+          "weak": 1
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "给予所有敌人 2 层虚弱 \n(消耗)",
+      "exhaust": true,
+      "target": "all_enemies",
+      "action": {
+        "applyDebuff": {
+          "weak": 2
+        }
+      }
+    }
+  },
+  "上勾拳": {
+    "type": "攻击",
+    "rarity": "uncommon",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 2,
+      "description": "造成 {damage} 点伤害，给予 2 层虚弱，给予 2 层易伤",
+      "action": {
+        "damage": 13,
+        "applyDebuff": {
+          "weak": 2,
+          "vulnerable": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "造成 {damage} 点伤害，给予 3 层虚弱，给予 3 层易伤",
+      "action": {
+        "damage": 15,
+        "applyDebuff": {
+          "weak": 3,
+          "vulnerable": 3
+        }
+      }
+    }
+  },
+  "暴走": {
+    "type": "攻击",
+    "rarity": "uncommon",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，本次战斗中每被打出一次，伤害增加加 5",
+      "action": {
+        "incrementalDamagePerUse": 5,
+        "baseDamage": 8
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，本次战斗中每被打出一次，伤害增加加 8",
+      "action": {
+        "incrementalDamagePerUse": 8,
+        "baseDamage": 8
+      }
+    }
+  },
+  "缴械": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "敌人失去 2 点力量 \n(消耗)",
+      "exhaust": true,
+      "action": {
+        "reduceEnemyBuff": {
+          "strength": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "敌人失去 3 点力量 \n(消耗)",
+      "exhaust": true,
+      "action": {
+        "reduceEnemyBuff": {
+          "strength": 3
+        }
+      }
+    }
+  },
+  "巩固": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "将你当前的格挡翻倍",
+      "action": {
+        "doubleCurrentBlock": true
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "将你当前的格挡翻倍",
+      "action": {
+        "doubleCurrentBlock": true
+      }
+    }
+  },
+  "燃烧": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "获得 2 点力量",
+      "action": {
+        "addBuffThisBattle": {
+          "strength": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "获得 3 点力量",
+      "action": {
+        "addBuffThisBattle": {
+          "strength": 3
+        }
+      }
+    }
+  },
+  "火焰屏障": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "获得 {block} 点格挡，这回合每受到一次攻击，对攻击者造成 4 点伤害",
+      "action": {
+        "gainBlock": 12,
+        "thornsThisTurn": 4
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "获得 {block} 点格挡，这回合每受到一次攻击，对攻击者造成 7 点伤害",
+      "action": {
+        "gainBlock": 17,
+        "thornsThisTurn": 7
+      }
+    }
+  },
+  "金属化": {
+    "type": "能力",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "在你的回合结束获得 3 点格挡",
+      "action": {
+        "trigger": {
+          "type": "turnEnd",
+          "effect": {
+            "gainBlock": 3
+          }
+        }
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "在你的回合结束获得 5 点格挡",
+      "action": {
+        "trigger": {
+          "type": "turnEnd",
+          "effect": {
+            "gainBlock": 5
+          }
+        }
+      }
+    }
+  },
+  "震荡波": {
+    "type": "技能",
+    "rarity": "uncommon",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "给予所有敌人 3 层虚弱和 3 层易伤 \n(消耗)",
+      "exhaust": true,
+      "target": "all_enemies",
+      "action": {
+        "applyDebuff": {
+          "weak": 3,
+          "vulnerable": 3
+        }
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "给予所有敌人 5 层虚弱和 5 层易伤 \n(消耗)",
+      "exhaust": true,
+      "target": "all_enemies",
+      "action": {
+        "applyDebuff": {
+          "weak": 5,
+          "vulnerable": 5
+        }
+      }
+    }
+  },
+  "势不可挡": {
+    "type": "能力",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "每当你获得格挡时，对随机敌人造成 5 点伤害",
+      "action": {
+        "trigger": {
+          "type": "onGainBlock",
+          "effect": {
+            "damage": 5
+          }
+        }
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "每当你获得格挡时，对随机敌人造成 8 点伤害",
+      "action": {
+        "trigger": {
+          "type": "onGainBlock",
+          "effect": {
+            "damage": 8
+          }
+        }
+      }
+    }
+  },
+  "壁垒": {
+    "type": "能力",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "格挡不再在你的回合开始时消失",
+      "action": {
+        "blockRetention": true
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "格挡不再在你的回合开始时消失",
+      "action": {
+        "blockRetention": true
+      }
+    }
+  },
+  "屹然不动": {
+    "type": "技能",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 2,
+      "description": "获得 {block} 点格挡",
+      "action": {
+        "gainBlock": 30
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "获得 {block} 点格挡",
+      "action": {
+        "gainBlock": 40
+      }
+    }
+  },
+  "残暴": {
+    "type": "能力",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "在你的回合开始时，你失去 1 点生命，抽 1 张牌",
+      "action": {
+        "trigger": {
+          "type": "turnStart",
+          "effect": {
+            "loseHp": 1,
+            "draw": 1
+          }
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "在你的回合开始时，你失去1点生命，抽一张牌 \n(固有)（战斗开始时一定在手牌中）",
+      "action": {
+        "trigger": "turnStart",
+        "effect": {
+          "loseHp": 1,
+          "draw": 1
+        },
+        "innate": true
+      }
+    }
+  },
+  "狂暴": {
+    "type": "能力",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 0,
+      "description": "自身获得 3 点易伤在每回合开始时获得 1 EP",
+      "action": {
+        "applyToSelf": true,
+        "applyDebuff": {
+          "vulnerable": 2
+        },
+        "debuffPersistent": true,
+        "trigger": {
+          "type": "turnStart",
+          "effect": {
+            "gainEp": 1
+          }
+        }
+      }
+    },
+    "level_1": {
+      "cost": 0,
+      "description": "自身获得 1 点易伤在每回合开始时获得 1 EP",
+      "action": {
+        "applyToSelf": true,
+        "applyDebuff": {
+          "vulnerable": 1
+        },
+        "debuffPersistent": true,
+        "trigger": {
+          "type": "turnStart",
+          "effect": {
+            "gainEp": 1
+          }
+        }
+      }
+    }
+  },
+  "突破极限": {
+    "type": "技能",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 1,
+      "description": "将你的力量翻倍 \n(消耗)",
+      "exhaust": true,
+      "action": {
+        "multiplyBuffThisBattle": {
+          "strength": 2
+        }
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "将你的力量翻倍",
+      "action": {
+        "multiplyBuffThisBattle": {
+          "strength": 2
+        }
+      }
+    }
+  },
+  "狂宴": {
+    "type": "攻击",
+    "rarity": "rare",
+    "target_type": "monster",
+    "level_0": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，斩杀时永久获得 3 点最大生命 \n(消耗)",
+      "exhaust": true,
+      "action": {
+        "damageOnKill": 10,
+        "onKillGainHp": 3
+      }
+    },
+    "level_1": {
+      "cost": 1,
+      "description": "造成 {damage} 点伤害，斩杀时永久获得 5 点最大生命 \n(消耗)",
+      "exhaust": true,
+      "action": {
+        "damage": 12,
+        "onKill": {
+          "gainMaxHp": 5
+        }
+      }
+    }
+  },
+  "恶魔形态": {
+    "type": "能力",
+    "rarity": "rare",
+    "target_type": "none",
+    "level_0": {
+      "cost": 3,
+      "description": "在每回合开始时获得 2 点力量",
+      "action": {
+        "trigger": {
+          "type": "turnStart",
+          "effect": {
+            "addBuffThisBattle": {
+              "strength": 2
+            }
+          }
+        }
+      }
+    },
+    "level_1": {
+      "cost": 2,
+      "description": "在每回合开始时获得 3 点力量",
+      "action": {
+        "trigger": {
+          "type": "turnStart",
+          "effect": {
+            "addBuffThisBattle": {
+              "strength": 3
+            }
+          }
+        }
+      }
+    }
+  }
+}

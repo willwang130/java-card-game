@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<!-- 顶部栏：蓝色区域 -->
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #00A2E8; -fx-padding: 5 20 5 20;">
+    <Label fx:id="playerHpLabelTop" text="HP: 80/80" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+    <Label fx:id="goldLabel" text="金币: 99" style="-fx-text-fill: white;"/>
+    <Label fx:id="floorLabel" text="层数: 1F" style="-fx-text-fill: white;"/>
+    <Label fx:id="levelLabel" text="第1层 / 共3层"/>
+    <Label fx:id="cardHoldTop" text="已有/上限"/>
+    <Button fx:id="openInventoryButton" text="我的背包" layoutX="10"
+            layoutY="10"/>
+
+    <!-- 宝物栏：橙色区域 -->
+    <VBox fx:id="relicBar" spacing="10" alignment="CENTER_LEFT"
+          style="-fx-background-color: #FFC000; -fx-padding: 5 20 5 20;"/>
+    <!-- 战斗日志区域 -->
+    <VBox layoutX="10" layoutY="20" prefWidth="150" spacing="5"
+          style="-fx-background-color: rgba(0,0,0,0.4); -fx-padding: 5;">
+        <Label text="战斗日志" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+        <ListView fx:id="gameLog" prefHeight="360"/>
+    </VBox>
+</HBox>

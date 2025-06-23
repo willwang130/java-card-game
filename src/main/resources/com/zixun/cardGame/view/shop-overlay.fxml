@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane prefWidth="1200" minWidth="1200" prefHeight="800" minHeight="800"
+            fx:controller="com.zixun.cardGame.controller.ShopOverlayController"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <!-- 第一排：标题居中 / 关闭按钮右对齐 -->
+        <HBox spacing="20" style="fx-padding: 12;">
+            <!-- 左侧：金币 & HP -->
+                <Label text="金币：" style="-fx-font-size: 16;"/>
+                <Label fx:id="goldLabel" style="-fx-font-size: 16;"/>
+                <Label text="HP：" style="-fx-font-size: 16;"/>
+                <Label fx:id="shopHP" style="-fx-font-size: 16;"/>
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- 中间：标题 -->
+            <Label text="商  店"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS" />
+            <!-- 右侧：关闭按钮 -->
+            <Button fx:id="closeButton"
+                    text="X" onAction="#onClose"
+                    style="-fx-background-color: transparent; -fx-font-size: 20;"/>
+        </HBox>
+    </top>
+    <center>
+        <StackPane alignment="TOP_CENTER">
+            <ScrollPane fitToWidth="false" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <GridPane fx:id="shopGrid"
+                          hgap="30" vgap="24"
+                          style="-fx-padding: 30;">
+                    <!-- 6 等宽列 -->
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="16.66"/>
+                        <ColumnConstraints percentWidth="16.66"/>
+                        <ColumnConstraints percentWidth="16.66"/>
+                        <ColumnConstraints percentWidth="16.66"/>
+                        <ColumnConstraints percentWidth="16.66"/>
+                        <ColumnConstraints percentWidth="16.66"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints prefHeight="260"/>
+                        <RowConstraints prefHeight="260"/>
+                        <RowConstraints prefHeight="80"/>
+                    </rowConstraints>
+                </GridPane>
+            </ScrollPane>
+
+        </StackPane>
+    </center>
+</BorderPane>

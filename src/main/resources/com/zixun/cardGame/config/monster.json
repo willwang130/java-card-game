@@ -1,0 +1,160 @@
+{
+  "哥布林": {
+    "type": "normal",
+    "hp": 30,
+    "initialBuffs": { "strength": 1 },
+    "ai": [
+      { "action": { "addBuff": { "strength": 1 } } },
+      { "action": { "damage": 6 } },
+      { "action": { "damage": 8 } }
+    ]
+  },
+  "兽人": {
+    "type": "normal",
+    "hp": 50,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 8 } },
+      { "action": { "gainBlock": 5 } },
+      { "action": { "damage": 12 } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "忍者": {
+    "type": "normal",
+    "hp": 35,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 5, "applyDebuff": { "vulnerable": 1 } } },
+      { "action": { "damage": 7 } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "狼人": {
+    "type": "normal",
+    "hp": 40,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 6 } },
+      { "action": { "damage": 6, "applyDebuff": { "vulnerable": 1 } } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "石像鬼": {
+    "type": "normal",
+    "hp": 45,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "gainBlock": 13 } },
+      { "action": { "damage": 5 } },
+      { "action": { "trigger": { "type": "turnEnd", "effect": { "gainBlock": 3 } } } }
+    ]
+  },
+  "狂战士": {
+    "type": "elite_1",
+    "hp": 70,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 12 } },
+      { "action": { "addBuff": { "strength": 1 } } },
+      { "action": { "damage": 16 } }
+    ]
+  },
+  "吸血鬼": {
+    "type": "elite_1",
+    "hp": 60,
+    "initialBuffs": { "strength": 1 },
+    "ai": [
+      { "action": { "lifeSteal": 8 } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "幽灵战士": {
+    "type": "elite_2",
+    "hp": 80,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "gainBlock": 5 } },
+      { "action": { "damage": 10 } },
+      { "action": { "applyDebuff": { "weak": 2 } } },
+      { "action": { "damage": 12 } }
+    ]
+  },
+  "黑骑士": {
+    "type": "elite_2",
+    "hp": 90,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "gainBlock": 15 } },
+      { "action": { "damage": 10 } },
+      { "action": { "applyDebuff": { "frail": 2 } } }
+    ]
+  },
+  "幻影刺客": {
+    "type": "elite_3",
+    "hp": 100,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 8, "applyDebuff": { "weak": 2 } } },
+      { "action": { "lifeSteal": 10 } },
+      { "action": { "damage": 15 } }
+    ]
+  },
+  "烈焰战神": {
+    "type": "boss_1",
+    "hp": 120,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 10 } },
+      { "action": { "damage": 6, "applyDebuff": { "vulnerable": 2 } } },
+      { "action": { "damage": 13 } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "腐蚀巨魔": {
+    "type": "boss_2",
+    "hp": 180,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "damage": 11 } },
+      { "action": { "applyDebuff": { "frail": 2 } } },
+      { "action": { "damage": 12 } },
+      { "action": { "addBuff": { "strength": 1 } } }
+    ]
+  },
+  "深渊之王": {
+    "type": "boss_2",
+    "hp": 190,
+    "initialBuffs": { },
+    "ai": [
+      { "action": { "applyDebuff": { "frail": 3 } } },
+      { "action": { "damage": 15 } },
+      { "action": { "trigger": { "type": "turnEnd", "effect": { "gainBlock": 3 } } } },
+      { "action": { "lifeSteal": 10 } }
+    ]
+  },
+  "黑炎领主": {
+    "type": "boss_3",
+    "hp": 260,
+    "initialBuffs": { "strength": 2 },
+    "ai": [
+      { "action": { "damage": 14, "applyDebuff": { "vulnerable": 2 } } },
+      { "action": { "addBuff": { "strength": 3 } } },
+      { "action": { "damage": 20 } },
+      { "action": { "gainBlock": 20 } }
+    ]
+  },
+  "终结之影": {
+    "type": "boss_3",
+    "hp": 250,
+    "initialBuffs": { "strength": 1 },
+    "ai": [
+      { "action": { "applyDebuff": { "weak": 2, "vulnerable": 2 } } },
+      { "action": { "damage": 18 } },
+      { "action": { "addBuff": { "strength": 2 } } },
+      { "action": { "lifeSteal": 12 } },
+      { "action": { "gainBlock": 15 } },
+      { "action": { "damage": 10 } }
+    ]
+  }
+}

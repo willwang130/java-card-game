@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.zixun.cardGame.controller.RelicInventoryController"
+            prefHeight="400.0" prefWidth="600.0">
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="点击要出售的宝物：" />
+            <TilePane fx:id="relicPane" hgap="10" vgap="10" />
+        </VBox>
+    </center>
+    <bottom>
+        <Button fx:id="closeButton"
+                text="✕"
+                onAction="#onClose"
+                style="-fx-background-color: transparent;
+               -fx-font-size: 20;
+               -fx-text-fill: #666;
+               -fx-padding: 4 8 4 8;"/>
+    </bottom>
+</BorderPane>
