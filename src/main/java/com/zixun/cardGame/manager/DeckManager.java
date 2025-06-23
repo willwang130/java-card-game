@@ -13,8 +13,8 @@ public class DeckManager {
     private final LinkedList<Card> power = new LinkedList<>();
 
     private final Map<String, List<String>> initialDeckMap = Map.of(
-            "warrior", List.of("壁垒", "巩固", "火焰屏障", "打击", "打击",
-                    "金属化", "打击", "打击", "缴械", "势不可挡", "屹然不动")
+            "warrior", List.of("打击", "打击", "打击", "打击", "打击",
+                    "防御", "防御", "防御", "防御", "痛击")
     );
 
     public static final int MAX_DECK = 25;
